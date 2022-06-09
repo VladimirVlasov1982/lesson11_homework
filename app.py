@@ -23,9 +23,10 @@ def index_page():
 @app.route('/candidates/<int:uid>')
 def candidate_page(uid):
     """Страница кандидатов, найденных по id"""
-    single_candidate = candidate_list.get_candidate(uid)[0]
-    return render_template('single.html', single_candidate=single_candidate)
-
+    single_candidate = candidate_list.get_candidate(uid)
+    if single_candidate:
+        return render_template('single.html', single_candidate=single_candidate)
+    return 'Нет такого кандидата'
 
 @app.route('/search/<candidate_name>')
 def search_page(candidate_name):
