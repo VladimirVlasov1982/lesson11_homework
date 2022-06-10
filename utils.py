@@ -27,7 +27,7 @@ class Candidates:
         """Возвращает кандидатов по навыку"""
         lst_candidate = []
         for candidate in self.load_candidates_from_json():
-            for skill in candidate['skills'].split(','):
+            for skill in candidate['skills'].split(', '):
                 if skill.lower() == skill_name.lower() and candidate not in lst_candidate:
                     lst_candidate.append(candidate)
         return lst_candidate
